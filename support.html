@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Aide - Oxanne</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #0A2240;
+            --navy-light: #16325B;
+            --brand-orange: #F36F21;
+            --orange-light: #FF8A3D;
+            --bg-light: #F8FAFC;
+            --surface: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            --border: #E2E8F0;
+            --success: #10B981;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 260px; height: 260px;
+            background: rgba(243,111,33,0.08);
+            border-radius: 50%;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 200px; height: 200px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+        .app-icon {
+            width: 72px; height: 72px;
+            background: var(--brand-orange);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(243,111,33,0.4);
+        }
+        header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        header p {
+            color: #CBD5E1;
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(243,111,33,0.2);
+            color: var(--orange-light);
+            border: 1px solid rgba(243,111,33,0.35);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ── CONTACT CARDS ── */
+        .contact-strip {
+            max-width: 900px;
+            margin: -40px auto 0;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            position: relative;
+            z-index: 10;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 18px;
+            padding: 24px 20px;
+            box-shadow: 0 8px 30px rgba(10,34,64,0.10);
+            border: 1px solid var(--border);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(10,34,64,0.14);
+        }
+        .contact-card .icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .contact-card strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .contact-card span {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+        .contact-card .action-label {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── MAIN CONTENT ── */
+        .container {
+            max-width: 900px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, var(--border), transparent);
+            border-radius: 2px;
+        }
+
+        /* ── FAQ ── */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+        .faq-item {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: background 0.15s;
+        }
+        .faq-question:hover { background: #F8FAFC; }
+        .faq-question.active { color: var(--primary-navy); }
+        .faq-arrow {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            background: #F1F5F9;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px;
+            transition: transform 0.25s, background 0.15s;
+        }
+        .faq-question.active .faq-arrow {
+            transform: rotate(180deg);
+            background: rgba(243,111,33,0.12);
+            color: var(--brand-orange);
+        }
+        .faq-answer {
+            display: none;
+            padding: 0 24px 20px;
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.65;
+            border-top: 1px solid #F1F5F9;
+            padding-top: 16px;
+        }
+        .faq-answer.open { display: block; }
+
+        /* ── HOW TO ── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+        .step-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 24px 20px;
+        }
+        .step-number {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--navy-light));
+            color: white;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        .step-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+        .step-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.5; }
+
+        /* ── LEGAL LINKS ── */
+        .legal-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .legal-link {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 20px 22px;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .legal-link:hover {
+            border-color: var(--brand-orange);
+            box-shadow: 0 4px 16px rgba(243,111,33,0.1);
+        }
+        .legal-link .legal-icon {
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+        .legal-link div { flex: 1; }
+        .legal-link strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+        .legal-link span { font-size: 12.5px; color: var(--text-muted); }
+        .legal-link .arrow { color: var(--brand-orange); font-size: 18px; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--primary-navy);
+            color: #94A3B8;
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 13px;
+        }
+        footer a { color: var(--orange-light); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 26px; }
+            .contact-strip { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <div class="app-icon">O</div>
+        <h1>Centre d'Aide Oxanne</h1>
+        <p>Nous sommes là pour vous aider. Trouvez des réponses rapides ou contactez notre équipe.</p>
+        <span class="badge">Support disponible 7j/7 · RDC</span>
+    </div>
+</header>
+
+<!-- CONTACT CARDS -->
+<div class="contact-strip">
+    <a class="contact-card" href="https://wa.me/243999111401?text=Bonjour%20Oxanne%2C%20j%27ai%20besoin%20d%27aide." target="_blank">
+        <span class="icon">💬</span>
+        <strong>WhatsApp Support</strong>
+        <span>+243 999 111 401</span>
+        <span class="action-label">Ouvrir WhatsApp →</span>
+    </a>
+    <a class="contact-card" href="mailto:supportoxanne@gmail.com?subject=Demande%20de%20Support%20Oxanne">
+        <span class="icon">📧</span>
+        <strong>Email Support</strong>
+        <span>supportoxanne@gmail.com</span>
+        <span class="action-label">Envoyer un email →</span>
+    </a>
+    <div class="contact-card">
+        <span class="icon">⏰</span>
+        <strong>Heures d'ouverture</strong>
+        <span>Lundi – Samedi<br>8h00 – 20h00 (CAT)</span>
+        <span class="action-label">Heure de Lubumbashi</span>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- HOW TO -->
+    <h2 class="section-title">Comment utiliser Oxanne</h2>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Créez votre compte</h3>
+            <p>Inscrivez-vous en tant que Client ou Artisan. Les artisans sont vérifiés par notre équipe avant activation.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Décrivez votre besoin</h3>
+            <p>Soumettez une demande détaillée avec photos, description du problème et votre localisation en RDC.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Recevez des devis</h3>
+            <p>Les artisans qualifiés disponibles dans votre zone vous contactent et proposent leurs tarifs.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Évaluez le service</h3>
+            <p>Une fois le travail effectué, laissez un avis honnête pour aider toute la communauté Oxanne.</p>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="section-title">Questions fréquentes</h2>
+    <div class="faq-list">
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Comment supprimer mon compte et mes données personnelles ?
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Vous pouvez supprimer définitivement votre compte à tout moment directement dans l'application : allez dans <strong>Profil → Supprimer mon compte</strong>. Cette action efface immédiatement et définitivement toutes vos données (profil, photos, messages, historique). Si vous rencontrez un problème, contactez-nous par WhatsApp ou email.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Je n'arrive pas à me connecter / j'ai oublié mon mot de passe
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Sur l'écran de connexion, appuyez sur <strong>« Mot de passe oublié »</strong>. Entrez votre email pour recevoir un lien de réinitialisation. Si vous ne recevez pas l'email, vérifiez vos spams ou contactez notre support WhatsApp.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Mon compte artisan est bloqué en « validation en attente »
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                La vérification des comptes artisans prend entre <strong>24h et 48h ouvrables</strong>. Notre équipe examine vos informations et qualifications. Si votre compte reste bloqué plus longtemps, contactez-nous via WhatsApp avec votre nom complet et numéro de téléphone d'inscription.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Comment signaler un artisan ou un comportement abusif ?
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Contactez-nous immédiatement par WhatsApp au <strong>+243 999 111 401</strong> ou par email à <strong>supportoxanne@gmail.com</strong> avec les détails de l'incident. Toute plainte est traitée sérieusement. Nous pouvons suspendre ou bannir définitivement un utilisateur en cas d'abus avéré.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Je n'arrive pas à envoyer des photos dans ma demande
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Vérifiez que vous avez accordé à l'application Oxanne les <strong>permissions d'accès à votre galerie photos</strong>. Allez dans les Paramètres de votre téléphone → Applications → Oxanne → Autorisations → Activer « Photos / Médias ». Si le problème persiste, redémarrez l'application.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Je ne reçois pas de notifications
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Vérifiez que les notifications Oxanne sont activées : <strong>Paramètres téléphone → Applications → Oxanne → Notifications → Activer</strong>. Assurez-vous aussi d'avoir une connexion Internet active. Essayez de vous déconnecter puis reconnecter à l'application.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Oxanne est-il disponible dans ma ville ?
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Oxanne est actuellement disponible dans les villes suivantes en RDC : <strong>Lubumbashi, Kinshasa, Kolwezi et Goma</strong>. D'autres villes seront progressivement ajoutées. Si votre ville n'est pas encore couverte, contactez-nous — votre demande peut accélérer son lancement.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Est-ce qu'Oxanne prend une commission sur les travaux ?
+                <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-answer">
+                Non. Oxanne est une plateforme de <strong>mise en relation uniquement</strong>. Les tarifs et paiements sont convenus directement entre le client et l'artisan. Oxanne ne perçoit aucune commission sur les prestations effectuées.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LEGAL LINKS -->
+    <h2 class="section-title">Documents légaux</h2>
+    <div class="legal-row">
+        <a class="legal-link" href="/privacy">
+            <span class="legal-icon">🛡️</span>
+            <div>
+                <strong>Politique de Confidentialité</strong>
+                <span>Protection de vos données personnelles</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+        <a class="legal-link" href="/terms">
+            <span class="legal-icon">📄</span>
+            <div>
+                <strong>Conditions d'Utilisation</strong>
+                <span>Règles et engagements de la plateforme</span>
+            </div>
+            <span class="arrow">→</span>
+        </a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <strong style="color:white;">Oxanne RDC</strong> — Laurent Muyauli · Lubumbashi, Haut-Katanga</p>
+    <p style="margin-top:8px;">
+        <a href="/privacy">Politique de confidentialité</a> &nbsp;·&nbsp;
+        <a href="/terms">Conditions d'utilisation</a> &nbsp;·&nbsp;
+        <a href="mailto:supportoxanne@gmail.com">supportoxanne@gmail.com</a>
+    </p>
+</footer>
+
+<script>
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+
+        // Ferme toutes les réponses
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('active'));
+
+        // Ouvre celle cliquée si elle était fermée
+        if (!isOpen) {
+            answer.classList.add('open');
+            btn.classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
